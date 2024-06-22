@@ -1,4 +1,4 @@
-from api.entities.entity import Entity
+from unnamed_game.entities.entity import Entity
 
 class Planet(Entity):
     def __init__(self, x_coordinate, y_coordinate, resources) -> None:

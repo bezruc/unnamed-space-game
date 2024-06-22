@@ -1,4 +1,4 @@
-from api.entities.planet import Planet
+from unnamed_game.entities.planet import Planet
 
 def test_planet_creation():
     planet = Planet(x_coordinate=0, y_coordinate=0, resources=1)

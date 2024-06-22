@@ -1,11 +1,13 @@
+from unnamed_game.entities.entity import Entity
 import math
 
-# Defines basic entity object
-class Entity():
-    def __init__(self,  x_coordinate, y_coordinate, speed=0) -> None:
-        self._target = None
-        self._coordinates = (x_coordinate, y_coordinate)
-        self._speed = speed
+class Fleet(Entity):
+    def __init__(self, x_coordinate, y_coordinate, speed=0) -> None:
+        super().__init__(x_coordinate, y_coordinate, speed)
+
+    def set_target(self, x_coordinate, y_coordinate):
+        self._target = (x_coordinate, y_coordinate)
+        return
 
     def simulate(self) -> None:
         """Simulates single tick behavior"""
@@ -37,8 +39,4 @@ class Entity():
         y_new = self._coordinates[1] + change_in_position_y
         
         self._coordinates = (x_new, y_new)
-        return
-
-    def set_target(self, x_coordinate, y_coordinate):
-        self._target = (x_coordinate, y_coordinate)
         return
