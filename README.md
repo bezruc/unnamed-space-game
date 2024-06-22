@@ -1,6 +1,8 @@
-Initial commit of the remository.
+# WIP
+## Unnamed game
 
-This repo will store backend for unnamed_space_game.
+This repository handles API for a single game instance.
 
-TODO:
-Everything
+### Testing
+
+Pytest is used for testing purposes, to run all tests, run `pytest` from root direcotry.
