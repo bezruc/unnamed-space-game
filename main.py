@@ -13,6 +13,7 @@ async def general():
     """
     TODO:
     - Returns general game info
+    - Returns generic Galaxy info
     """
     return "DUMMY"
 
