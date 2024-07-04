@@ -3,37 +3,74 @@ from fastapi import FastAPI
 app = FastAPI()
 
 
-@app.get("/")
+@app.get("/hello")
 async def root():
     return {"message": "Hello World"}
 
 
-"""
-TODO:
+@app.get("/general")
+async def general():
+    """
+    TODO:
+    - Returns general game info
+    """
+    return "DUMMY"
 
-GET "/{player}/state"
-- Returns json with:
-    * list of planets        (id, position, visibility, resources (visibility based), upgrades (visibility based))
-    * list of visible fleets (id, position, power, destination(if any))
 
-GET "/{player}/general"
-- Returns json with general info:
-    * other player stats
-    * game options
-    * research info
+@app.get("/{player}/state")
+async def player_state(player):
+    """
+    Currently just a dummy
+    TODO:
+    - Returns json with:
+        * info about player resources/techs/etc
+        * list of planets (id, position, visibility, resources
+          (visibility based), upgrades (visibility based))
+        * list of visible fleets (id, position, power, destination(if any))
+    """
+    return "DUMMY"
 
-POST "/{player}/fleet_order/{fleet_id}/{destination_id}
-- Sends an order, returns aknowledgment or error
 
-POST "/{player}/planet_upgrade/{planet_id}/{type_of_upgrade}
-- Sends an upgrade, returns aknowledgment or error
+@app.post("/{player}/fleet_order/{fleet_id}/{destination_id}")
+async def fleet_order():
+    """
+    TODO:
+    - Sends an order, returns aknowledgment or error
+    """
+    return "DUMMY"
 
-POST "/{player}/research_change/{what_research}
-- Sends an research optiion, returns aknowledgment or error
 
-POST "/{player}/trade/{player}/{research_or_number}
-- Sends a trade, returns aknowledgment or error
+@app.post("/{player}/planet_upgrade/{planet_id}/{type_of_upgrade}")
+async def planet_upgrade():
+    """
+    TODO:
+    - Sends an upgrade, returns aknowledgment or error
+    """
+    return "DUMMY"
 
-POST "/{player}/end_turn
-- Sends an end turn, returns aknowledgment or error
-"""
+
+@app.post("/{player}/research_change/{what_research}")
+async def select_research():
+    """
+    TODO:
+    - Sends an research option, returns aknowledgment or error
+    """
+    return "DUMMY"
+
+
+@app.post("/{who}/trade/{with}/{research_or_number}")
+async def trade():
+    """
+    TODO:
+    - Sends a trade, returns aknowledgment or error
+    """
+    return "DUMMY"
+
+
+@app.post("/{player}/end_turn")
+async def end_turn():
+    """
+    TODO:
+    - Sends an end turn, returns aknowledgment or error
+    """
+    return "DUMMY"

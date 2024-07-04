@@ -1,4 +1,3 @@
-import math
 
 # Defines basic entity object
 class Entity():
