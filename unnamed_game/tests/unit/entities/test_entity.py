@@ -1,4 +1,4 @@
-from unnamed_game.entities.entity import Entity
+from unnamed_game.src.entities.entity import Entity
 
 
 def test_entity_creation():

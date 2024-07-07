@@ -1,10 +1,13 @@
-from unnamed_game.entities.entity import Entity
+from unnamed_game.src.entities.entity import Entity
 import math
+import logging
 
 
 class Fleet(Entity):
-    def __init__(self, x_coordinate, y_coordinate, speed=0) -> None:
-        super().__init__(x_coordinate, y_coordinate, speed)
+    def __init__(self, x_coordinate: float, y_coordinate: float, speed=10, owner=None) -> None:
+        super().__init__(x_coordinate, y_coordinate, owner)
+        self._speed = speed
+        self._target = None
 
     def set_target(self, x_coordinate, y_coordinate):
         self._target = (x_coordinate, y_coordinate)
@@ -41,4 +44,5 @@ class Fleet(Entity):
         y_new = self._coordinates[1] + change_in_position_y
 
         self._coordinates = (x_new, y_new)
+        logging.info('Fleet %s at: %.2f, %.2f', self._id, self._coordinates[0], self._coordinates[1])
         return

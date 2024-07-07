@@ -1,4 +1,4 @@
-from unnamed_game.entities.fleet import Fleet
+from unnamed_game.src.entities.fleet import Fleet
 
 
 # test if math of simulation is correct
