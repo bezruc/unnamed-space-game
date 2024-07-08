@@ -1,4 +1,4 @@
-class Group(Entity):
+class Group:
     def __init__(self, name) -> None:
         self._name = name
         self._players = None # player reference?

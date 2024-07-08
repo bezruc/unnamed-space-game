@@ -1,4 +1,4 @@
-class Party(Entity):
+class Party:
     def __init__(self, name, owner=None) -> None:
         self._name = name
         # TODO owner
