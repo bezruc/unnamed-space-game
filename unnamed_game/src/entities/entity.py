@@ -1,4 +1,3 @@
-import logging
 import itertools
 
 
@@ -10,8 +9,7 @@ class Entity():
         self._coordinates = (x_coordinate, y_coordinate)
         self._owner = None
         self._id = next(Entity._id_iter)
-        logging.info("Entity %s created at %.2f, %.2f.",  self._id, self._coordinates[0], self._coordinates[1])
-
+    
     def get_owner(self):
         return self._owner
     
