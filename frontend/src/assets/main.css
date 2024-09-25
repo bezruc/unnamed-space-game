@@ -17,6 +17,9 @@
   --c-secondary-bg: hsl(from var(--c-main) h s 20%);
   --c-secondary-tx: hsl(from var(--c-main) h s 80%);
 
+  --c-tertiary-bg: hsl(from var(--c-main) h s 30%);
+  --c-tertiary-tx: hsl(from var(--c-main) h s 70%);
+
   /* --h-header: 2rem;
   --h-navbar: 3rem;
   --h-footer: 2rem; */

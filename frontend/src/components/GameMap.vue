@@ -1,7 +1,7 @@
-<script setup></script>
+<script setup>
+import HexMap from "./hexmap/HexMap.vue"
+</script>
 
 <template>
-  <div>game map, there are definitely some ships</div>
+  <HexMap :columns="19" :rows="7" />
 </template>
-
-<style scoped></style>
