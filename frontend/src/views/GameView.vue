@@ -1,7 +1,7 @@
 <script setup>
-import GameSidebarPanel from "@/components/GameSidebarPanel.vue"
-import GameBoard from "@/components/GameBoard.vue"
-import GameDetailPanel from "@/components/GameDetailPanel.vue"
+  import GameSidebarPanel from "@/components/GameSidebarPanel.vue"
+  import GameBoard from "@/components/GameBoard.vue"
+  import GameDetailPanel from "@/components/GameDetailPanel.vue"
 </script>
 
 <template>

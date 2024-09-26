@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import IconCogwheel from "./icons/IconCogwheel.vue"
-import IconList from "./icons/IconList.vue"
-import IconMap from "./icons/IconMap.vue"
-import GameSidebarButton from "./GameSidebarButton.vue"
+  import IconCogwheel from "./icons/IconCogwheel.vue"
+  import IconList from "./icons/IconList.vue"
+  import IconMap from "./icons/IconMap.vue"
+  import GameSidebarButton from "./GameSidebarButton.vue"
 </script>
 
 <template>
@@ -26,13 +26,13 @@ import GameSidebarButton from "./GameSidebarButton.vue"
 </template>
 
 <style scoped>
-aside {
-  height: 100%;
-  min-width: var(--w-sidebar);
-  border-width: 0px 2px 0px 0px;
-  border-color: var(--c-primary-tx);
-  border-style: solid;
-  background-color: var(--c-primary-bg);
-  color: var(--c-primary-tx);
-}
+  aside {
+    height: 100%;
+    min-width: var(--w-sidebar);
+    border-width: 0px 2px 0px 0px;
+    border-color: var(--c-primary-tx);
+    border-style: solid;
+    background-color: var(--c-primary-bg);
+    color: var(--c-primary-tx);
+  }
 </style>

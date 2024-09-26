@@ -1,12 +1,12 @@
 <script setup>
-import { useGameStateStore } from "@/stores/gamestate"
-import { storeToRefs } from "pinia"
+  import { useGameStateStore } from "@/stores/gamestate"
+  import { storeToRefs } from "pinia"
 
-const gameState = useGameStateStore()
+  const gameState = useGameStateStore()
 
-const { ships } = storeToRefs(gameState)
+  const { ships } = storeToRefs(gameState)
 
-const { selectShip, deselectShip } = gameState
+  const { selectShip, deselectShip } = gameState
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const { selectShip, deselectShip } = gameState
 </template>
 
 <style scoped>
-li::marker {
-  content: "";
-}
+  li::marker {
+    content: "";
+  }
 </style>

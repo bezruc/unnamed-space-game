@@ -5,7 +5,7 @@
 </template>
 
 <style scoped>
-footer {
-  height: var(--h-footer);
-}
+  footer {
+    height: var(--h-footer);
+  }
 </style>

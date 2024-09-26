@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from "vue-router"
+  import { RouterView } from "vue-router"
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import { RouterView } from "vue-router"
 </template>
 
 <style scoped>
-.gameboard {
-  width: calc(100vw - var(--w-gamemap-offset));
-  background-color: var(--c-primary-space);
-}
+  .gameboard {
+    width: calc(100vw - var(--w-gamemap-offset));
+    background-color: var(--c-primary-space);
+  }
 </style>

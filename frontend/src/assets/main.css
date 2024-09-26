@@ -12,7 +12,7 @@
 
   --c-primary-bg: hsl(from var(--c-main) h s 10%);
   --c-primary-tx: hsl(from var(--c-main) h s 90%);
-  --c-primary-space: hsl(from var(--c-main) h s 0%);
+  --c-primary-space: hsl(from var(--c-main) h s 5%);
 
   --c-secondary-bg: hsl(from var(--c-main) h s 20%);
   --c-secondary-tx: hsl(from var(--c-main) h s 80%);
@@ -32,6 +32,22 @@
   --w-sidebar: 60px;
   --w-detail: 150px;
   --w-gamemap-offset: var(--w-sidebar);
+
+  /* grid item height and vertical gap size are the only two variables defining size of the hexmap */
+  /* we use half of the defined height for row height to be able to offset the hexagons with each column */
+  --h-grid-item: 100px;
+  --h-gap-grid: 5px;
+
+  /* hexagon height is two rows and vertical gap size */
+  --h-hextile: calc(var(--h-grid-item) + var(--h-gap-grid));
+  /* width can be calculated with "height * 2 / sqrt(3)"  */
+  --w-hextile: calc(var(--h-hextile) * 2 / sqrt(3));
+  /* the width of column is equal to the hexagon side length */
+  --w-grid-item: calc(var(--w-hextile) / 2);
+
+  /* the gap created between points of three hexagons must create equilateral triangle */
+  /* horizontal gap size is equal to addition of 1/4 of hexagon width and altitude of the triangle */
+  --w-gap-grid: calc(var(--w-hextile) / 4 + var(--h-gap-grid) * sqrt(3) / 2);
 }
 
 body {

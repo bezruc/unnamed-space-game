@@ -1,7 +1,9 @@
 <script setup>
-import HexMap from "./hexmap/HexMap.vue"
+  import HexMap from "./hexmap/HexMap.vue"
 </script>
 
 <template>
-  <HexMap :columns="19" :rows="7" />
+  <HexMap :columns="5" :rows="3" />
 </template>
+
+<style scoped></style>

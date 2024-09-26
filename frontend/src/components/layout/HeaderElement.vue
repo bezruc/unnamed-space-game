@@ -7,7 +7,7 @@
 </template>
 
 <style scoped>
-header {
-  height: var(--h-header);
-}
+  header {
+    height: var(--h-header);
+  }
 </style>

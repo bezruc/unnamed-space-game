@@ -1,5 +1,5 @@
 <script setup>
-import { RouterView } from "vue-router"
+  import { RouterView } from "vue-router"
 </script>
 
 <template>
@@ -9,8 +9,8 @@ import { RouterView } from "vue-router"
 </template>
 
 <style scoped>
-main {
-  height: calc(100vh - var(--h-main-offset));
-  display: flex;
-}
+  main {
+    height: calc(100vh - var(--h-main-offset));
+    display: flex;
+  }
 </style>

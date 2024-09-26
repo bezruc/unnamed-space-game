@@ -1,10 +1,10 @@
 <script setup>
-import { RouterLink } from "vue-router"
+  import { RouterLink } from "vue-router"
 
-defineProps({
-  subroute: String,
-  tooltip: String
-})
+  defineProps({
+    subroute: String,
+    tooltip: String
+  })
 </script>
 
 <template>
@@ -21,43 +21,43 @@ defineProps({
 </template>
 
 <style scoped>
-button {
-  display: block;
-  width: 100%;
-  background: none;
-  cursor: pointer;
-  border: none;
-  padding: 10px;
-  /* padding-bottom: 30px; */
-}
+  button {
+    display: block;
+    width: 100%;
+    background: none;
+    cursor: pointer;
+    border: none;
+    padding: 10px;
+    /* padding-bottom: 30px; */
+  }
 
-.router-link-current {
-  color: var(--c-primary-tx);
-  background-color: var(--c-secondary-bg);
-  font-weight: 600;
-}
+  .router-link-current {
+    color: var(--c-primary-tx);
+    background-color: var(--c-secondary-bg);
+    font-weight: 600;
+  }
 
-button {
-  position: relative;
-}
+  button {
+    position: relative;
+  }
 
-button:hover {
-  padding-bottom: 30px;
-}
+  button:hover {
+    padding-bottom: 30px;
+  }
 
-button::after {
-  color: var(--c-primary-tx);
-  content: attr(title);
-  display: none;
-  left: 50%;
-  transform: translateX(-50%);
-  position: absolute;
-}
-button:hover::after {
-  display: block;
-}
+  button::after {
+    color: var(--c-primary-tx);
+    content: attr(title);
+    display: none;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute;
+  }
+  button:hover::after {
+    display: block;
+  }
 
-/*
+  /*
 color: inherit;
 
 font: inherit;

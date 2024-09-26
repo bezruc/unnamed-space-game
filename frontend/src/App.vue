@@ -1,8 +1,8 @@
 <script setup>
-import FooterElement from "./components/layout/FooterElement.vue"
-import HeaderElement from "./components/layout/HeaderElement.vue"
-import MainElement from "./components/layout/MainElement.vue"
-import NavbarElement from "./components/layout/NavbarElement.vue"
+  import FooterElement from "./components/layout/FooterElement.vue"
+  import HeaderElement from "./components/layout/HeaderElement.vue"
+  import MainElement from "./components/layout/MainElement.vue"
+  import NavbarElement from "./components/layout/NavbarElement.vue"
 </script>
 
 <template>
