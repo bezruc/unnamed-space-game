@@ -1,0 +1,118 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+:root {
+  --c-main: black;
+
+  --c-primary-bg: hsl(from var(--c-main) h s 10%);
+  --c-primary-tx: hsl(from var(--c-main) h s 90%);
+  --c-primary-space: hsl(from var(--c-main) h s 5%);
+
+  --c-secondary-bg: hsl(from var(--c-main) h s 20%);
+  --c-secondary-tx: hsl(from var(--c-main) h s 80%);
+
+  --c-tertiary-bg: hsl(from var(--c-main) h s 30%);
+  --c-tertiary-tx: hsl(from var(--c-main) h s 70%);
+
+  /* --h-header: 2rem;
+  --h-navbar: 3rem;
+  --h-footer: 2rem; */
+
+  --h-header: 40px;
+  --h-navbar: 40px;
+  --h-footer: 40px;
+  --h-main-offset: (var(--h-header) + var(--h-navbar) + var(--h-footer));
+
+  --w-sidebar: 60px;
+  --w-detail: 150px;
+  --w-gamemap-offset: var(--w-sidebar);
+
+  /* grid item height and vertical gap size are the only two variables defining size of the hexmap */
+  /* we use half of the defined height for row height to be able to offset the hexagons with each column */
+  --h-grid-item: 100px;
+  --h-gap-grid: 5px;
+
+  /* hexagon height is two rows and vertical gap size */
+  --h-hextile: calc(var(--h-grid-item) + var(--h-gap-grid));
+  /* width can be calculated with "height * 2 / sqrt(3)"  */
+  --w-hextile: calc(var(--h-hextile) * 2 / sqrt(3));
+  /* the width of column is equal to the hexagon side length */
+  --w-grid-item: calc(var(--w-hextile) / 2);
+
+  /* the gap created between points of three hexagons must create equilateral triangle */
+  /* horizontal gap size is equal to addition of 1/4 of hexagon width and altitude of the triangle */
+  --w-gap-grid: calc(var(--w-hextile) / 4 + var(--h-gap-grid) * sqrt(3) / 2);
+}
+
+body {
+  line-height: 1.5;
+  min-height: 100vh;
+  background: var(--c-primary-bg);
+  color: var(--c-primary-tx);
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    "Fira Sans",
+    "Droid Sans",
+    "Helvetica Neue",
+    sans-serif;
+  /* font-size: 15px;
+  transition:
+    color 0.5s,
+    background-color 0.5s; */
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+.visible-layout {
+  border: 2px solid var(--c-primary-tx);
+}
+
+.layout-part {
+  border-width: 2px 0px 0px 0px;
+  border-color: var(--c-primary-tx);
+  border-style: solid;
+}
+
+path {
+  fill: var(--c-primary-tx);
+}
