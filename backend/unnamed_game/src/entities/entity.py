@@ -10,6 +10,13 @@ class Entity():
         self._owner = None
         self._id = next(Entity._id_iter)
     
+    def __dict__(self):
+        return {
+            "id": self._id,
+            "owner": self._owner,
+            "coordinates": self._coordinates
+        }
+    
     def get_owner(self):
         return self._owner
     
@@ -20,7 +27,7 @@ class Entity():
         return self._id
     
     def get_coordinates(self):
-        return self._coordinates
+        return self._coordinates   
 
     def simulate(self) -> None:
         return

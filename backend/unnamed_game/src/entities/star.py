@@ -8,3 +8,10 @@ class Star(Entity):
         # TODO eco/inf levels?
         # TODO rare resouces as list? (weak link?)
         # TODO Politics (best if its a separate class party.py and just hold references)
+        
+    def __dict__(self): 
+        return {
+            "id": self._id,
+            "owner": self._owner,
+            "coordinates": self._coordinates
+        }

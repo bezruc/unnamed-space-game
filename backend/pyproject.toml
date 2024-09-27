@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "unnamed-space-game"
 version = "0.1.0"
-description = ""
+description = "Backend API for unnamed-game"
 authors = ["Bezruc"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-fastapi = "^0.114.2"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
 schedule = "^1.2.2"
 
 

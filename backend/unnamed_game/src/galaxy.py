@@ -5,11 +5,10 @@ from unnamed_game.src.entities.fleet import Fleet
            
 
 class Galaxy:
-    def __init__(self, players: list, turn_timer=3600) -> None:
+    def __init__(self, players: list) -> None:
         self._players = players
         self._stars = {}
         self._fleets = {}
-        self._turn_timer = turn_timer
 
         # --------------------------------------------------------------------------
         # placeholder galaxy generation, TODO: Create separate method for generation
@@ -28,15 +27,15 @@ class Galaxy:
             
         # --------------------------------------------------------------------------
 
-        # schedule next forced turn
-        schedule.every(self._turn_timer).seconds.do(self.advance_time)
-
     def advance_time(self):
         for id, star in self._stars.items():
             star.simulate()
         
         for id, fleet in self._fleets.items():
             fleet.simulate()
-        
-        schedule.clear()
-        schedule.every(self._turn_timer).seconds.do(self.advance_time)
+          
+    def get_galaxy_state(self):
+        return {
+            "stars": self._stars,
+            "fleets": self._fleets
+        }

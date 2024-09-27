@@ -10,10 +10,19 @@ class Fleet(Entity):
         self._speed = speed
         self._target = None
         logger.info("Fleet %s created at %.2f, %.2f.",  self._id, self._coordinates[0], self._coordinates[1])
+        
+    def __dict__(self):
+        return {
+            "id": self._id,
+            "owner": self._owner,
+            "coordinates": self._coordinates,
+            "speed": self._speed,
+            "target": self._target
+        }
 
     def set_target(self, x_coordinate, y_coordinate):
         self._target = (x_coordinate, y_coordinate)
-        return
+
 
     def simulate(self) -> None:
         """Simulates single tick behavior"""

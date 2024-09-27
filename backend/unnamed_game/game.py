@@ -1,7 +1,9 @@
 from unnamed_game.src.player import Player
 from unnamed_game.src.galaxy import Galaxy
 
-class Instance:
+
+class Instance:    
+    
     def __init__(self, num_of_players: int) -> None:
         self._players = []
         self._galaxy = None
@@ -25,14 +27,9 @@ class Instance:
                 return
         
         self._advance_time()
-
-
-instance = None
-
-
-def init(player_count):
-    instance = Instance(player_count)
-
-
-def get_instance():
-    return instance
+    
+    def get_state(self, player):
+        return {
+            f"player{1}".format(player): self._players[player].__dict__(),
+            "galaxy": self._galaxy.__dict__()
+        }
