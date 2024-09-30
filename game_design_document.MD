@@ -3,9 +3,9 @@
 ## Game Overview
 
 - Game Title: *TODO*
-- Game Genre: Online RTS
+- Game Genre: Online TBS
 - Target Platform(s): Browser game
-- Game Description: In this space-themed RTS game, players take on the role of space empires, vying for control over the vast galaxy. Utilize cunning strategies and employ any means necessary to outmaneuver and outwit your opponents.
+- Game Description: In this space-themed TBS game, players take on the role of space empires, vying for control over the vast galaxy. Utilize cunning strategies and employ any means necessary to outmaneuver and outwit your opponents.
 
 
 ## Gameplay Mechanics
@@ -13,7 +13,7 @@
 - Core Gameplay Mechanics:
     * Hexagonal map containing a wast space, with a lot of workable resources but a few colonizable stars.
     * Ships move between hexes based on speed, which determines, how fast can a ship transition to another hex.
-    * Real time movement based on 
+    * Turn based movement - every player queues moves simultaneously, then simulation happen.
     * Combat is concluded using dice rolls. Multiple options of ship type/def/atk (ADV/DISADV based on weapons and armor used, different damage, HP based on ship type)
     * There will be basic adjacency bonuses to ships (example: command ship gives bonus nearby 2 hexes for attack rolls and such)
     * Research that opens further options in economy/ship types
@@ -25,7 +25,7 @@
     * Each game is self-contained. Players start with a planet and a few ships, then progress towards huge empires spanning tens of planets and hundreds of tiles. Space is limited, which will create geopolitical tension, which will be the main point of the game.
 - Game Difficulty:
     * Very simple to get into, with the possibility to grow game knowledge to gain an edge over other players.
-- Game Modes: RTS with possible TBS option added later.
+
 
 ## User Interface
 
@@ -57,6 +57,6 @@ F2P with the option to go premium for a *unsepcified sum*. This allows for furth
 
 ## Marketing and Distribution
 
-- Target Audience: People who hate themselves and need RTS crack
+- Target Audience: People who hate themselves
 - Marketing Strategies: *TODO*
-- Distribution Platforms: Freely available online
+- Distribution Platforms: Available online

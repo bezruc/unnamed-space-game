@@ -1,21 +1,29 @@
 from fastapi import FastAPI
-from unnamed_game.game import Instance
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+from backend.utils.coordinator import Coordinator
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    app.state.coordinator = Coordinator()
+    yield
+    
+
+app = FastAPI(lifespan=lifespan)
+
 
 @app.get("/hello")
 async def hello():
     return {"message": "Hello World"}
 
-@app.post("/start/{num_of_players}")
-async def start_instance(num_of_players: int):
-    Instance(num_of_players)
 
-@app.post("/{player}/end_turn")
-async def end_turn(player):
-    Instance.get_instance().end_turn(player)
-    
+@app.get("/start_instance/{players}")
+async def start_instance(players: int):
+    id = app.state.coordinator.start_instance(players)
+    return {"instance_id": id}
 
-@app.get("/state/{player}")
-async def get_state(player):
-    return Instance.get_state(player=int(player))
+
+@app.get("/get_instance/{id}/map")
+async def get_instance_map(id: int):
+    return app.state.coordinator.get_instance(id).get_map()

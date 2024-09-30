@@ -3,7 +3,7 @@
 
 This repository handles backend API for a single game instance.
 
-## How to run repository locally
+## How to run BACKEND api locally
 
 To run this repo you will need:
 * Python
@@ -17,4 +17,5 @@ https://fastapi.tiangolo.com/
 
 ### Testing
 
+(nothing to test yet)
 Pytest is used for testing purposes, to run all tests, run `pytest` from root directory.
