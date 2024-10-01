@@ -26,7 +26,12 @@ async def start_instance(players: int):
 
 @app.get("/{instance_id}/map")
 async def get_instance_map(instance_id: int):
-    return {"map": app.state.coordinator.get_instance(instance_id).get_map()}
+    return {"map": app.state.coordinator.get_instance(instance_id).get_map().get_hex_list()}
+
+
+@app.get("/{instance_id}/get_tile/{q}/{r}")
+async def get_tile(instance_id: int, q: int, r: int):
+    return {"tile": app.state.coordinator.get_instance(instance_id).get_map().get_hex(q, r)}
 
 
 @app.get("/{instance_id}/{player_id}/end_turn")

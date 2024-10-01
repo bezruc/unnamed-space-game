@@ -19,8 +19,8 @@ class Instance:
             player.add_planet(hex)
             player.add_ship(hex)
         
-    def get_map(self) -> list[dict]:
-        return self._map.get_map()
+    def get_map(self) -> Map:
+        return self._map
     
     def get_player(self, id: int) -> Player:
         return self._players[id]

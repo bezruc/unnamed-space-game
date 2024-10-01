@@ -52,7 +52,7 @@ class Map:
     def get_hex(self, q: int, r: int) -> Hex:
         return self._hexes[q][r]
     
-    def get_map(self) -> list[Hex]:
+    def get_hex_list(self) -> list[Hex]:
         hexes = []
         for i in range(len(self._hexes)):
             for j in range(len(self._hexes[i])):
