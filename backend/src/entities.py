@@ -22,6 +22,9 @@ class Entity:
         
     def update_owner(self, owner) -> None:
         self._owner = owner
+        
+    def simulate(self) -> None:
+        pass
 
 
 class Ship(Entity):
@@ -42,7 +45,7 @@ class Ship(Entity):
         
     def set_target(self, q: int, r: int) -> None:
         self._target = (q, r)
-    
+
     
 class Planet(Entity):
     def __init__(self, q, r, owner, production) -> None:
