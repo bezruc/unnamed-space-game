@@ -1,5 +1,6 @@
 <script setup lang="ts">
   import IconCogwheel from "./icons/IconCogwheel.vue"
+  import IconRocket from "./icons/IconRocket.vue"
   import IconList from "./icons/IconList.vue"
   import IconMap from "./icons/IconMap.vue"
   import GameSidebarButton from "./GameSidebarButton.vue"
@@ -7,6 +8,11 @@
 
 <template>
   <aside>
+    <GameSidebarButton subroute="overview" tooltip="Overview">
+      <template #icon>
+        <IconRocket />
+      </template>
+    </GameSidebarButton>
     <GameSidebarButton subroute="map" tooltip="Map">
       <template #icon>
         <IconMap />
@@ -34,5 +40,6 @@
     border-style: solid;
     background-color: var(--c-primary-bg);
     color: var(--c-primary-tx);
+    z-index: 100;
   }
 </style>

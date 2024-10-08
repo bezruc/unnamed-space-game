@@ -1,7 +1,10 @@
 import { ref } from "vue"
 import { defineStore } from "pinia"
 
-export const useGameStateStore = defineStore("game-state", () => {
+import sessionPhase from "@/models/sessionPhase"
+import sessionPlayerStatus from "@/models/sessionPlayerStatus"
+
+export const useGameStateStore = defineStore("game-phase", () => {
   let ships = ref([
     {
       id: 1,
@@ -61,21 +64,77 @@ export const useGameStateStore = defineStore("game-state", () => {
     selectedShip.value = {}
   }
 
-  // const count = ref(0)
-  // const doubleCount = computed(() => count.value * 2)
-  // function appendShip() {
-  //   ships.value.push({
-  //     id: 3,
-  //     name: "Ship 3",
-  //     allegiance: "Bluetards",
-  //     color: "blue",
-  //     position: {
-  //       x: 300,
-  //       y: 300
-  //     }
-  //   })
-  //   console.log(ships.value.length)
-  // }
+  let currentUserId = 1
 
-  return { ships, selectedShip, selectShip, deselectShip }
+  let sessions = ref([
+    {
+      id: 1,
+      name: "party hrad",
+      created: new Date(Date.now() + 100005100).toISOString(),
+      phase: sessionPhase[0],
+      activityLog: ["player 1 created lobby"],
+      players: [
+        {
+          id: 1,
+          name: "Derg",
+          faction: "blue",
+          isOwner: true,
+          status: sessionPlayerStatus[0]
+        },
+        {
+          id: 2,
+          name: "Bezruc",
+          faction: "red",
+          isOwner: false,
+          status: sessionPlayerStatus[0]
+        },
+        {
+          id: 3,
+          name: "UnknownPlayer",
+          faction: "green",
+          isOwner: false,
+          status: sessionPlayerStatus[0]
+        }
+      ]
+    },
+    {
+      id: 2,
+      name: "something",
+      created: new Date(Date.now()).toISOString(),
+      phase: sessionPhase[0],
+      activityLog: ["player 2 created lobby", "player 3 left the lobby"],
+      players: [
+        {
+          id: 4,
+          name: "Gred",
+          faction: "blue",
+          isOwner: false,
+          status: sessionPlayerStatus[0]
+        },
+        {
+          id: 5,
+          name: "Curzeb",
+          faction: "red",
+          isOwner: true,
+          status: sessionPlayerStatus[0]
+        },
+        {
+          id: 6,
+          name: "Noman",
+          faction: "green",
+          isOwner: false,
+          status: sessionPlayerStatus[2]
+        }
+      ]
+    }
+  ])
+
+  return {
+    currentUserId,
+    ships,
+    selectedShip,
+    selectShip,
+    deselectShip,
+    sessions
+  }
 })

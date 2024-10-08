@@ -1,3 +1,7 @@
-<template>lobby</template>
+<script setup>
+  import LobbyOverview from "@/components/LobbyOverview.vue"
+</script>
 
-<style></style>
+<template><LobbyOverview /></template>
+
+<style scoped></style>

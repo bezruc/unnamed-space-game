@@ -1,5 +1,5 @@
 <script setup>
-  import { computed } from "vue"
+  import { computed, ref } from "vue"
 
   const { row, column } = defineProps({
     row: {
@@ -12,6 +12,12 @@
     }
   })
 
+  let isSelected = ref(false)
+
+  const select = () => {
+    isSelected.value = true
+  }
+
   const rowSpan = computed(() => {
     if (column % 2 != 0) {
       return { start: row * 2 - 1, end: row * 2 + 1 }
@@ -22,7 +28,7 @@
 </script>
 
 <template>
-  <div class="hexagon"></div>
+  <div @click="select" class="hexagon" :class="{ selected: isSelected }"></div>
 </template>
 
 <style scoped>
@@ -39,5 +45,9 @@
 
   .hexagon:hover {
     background: var(--c-secondary-bg);
+  }
+
+  .selected {
+    background: var(--c-tertiary-bg);
   }
 </style>

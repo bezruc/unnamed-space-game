@@ -2,7 +2,7 @@
   import { RouterLink } from "vue-router"
 
   const routes = {
-    game: "/",
+    game: "/game",
     lobby: "/lobby"
   }
 </script>
@@ -12,7 +12,7 @@
     <RouterLink
       :to="routes.game"
       class="router-link"
-      :class="{ 'router-link-current': $router.currentRoute.value.path == routes.game }"
+      :class="{ 'router-link-current': $router.currentRoute.value.path.startsWith(routes.game) }"
       >Game</RouterLink
     >
     <RouterLink

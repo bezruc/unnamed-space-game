@@ -32,5 +32,6 @@
     background-color: var(--c-primary-bg);
     background-color: hsl(from var(--c-primary-detail) h s 10%);
     color: hsl(from var(--c-primary-detail) h s 90%);
+    z-index: 100;
   }
 </style>

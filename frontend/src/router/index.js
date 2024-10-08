@@ -2,29 +2,36 @@ import { createRouter, createWebHistory } from "vue-router"
 import GameView from "@/views/GameView.vue"
 import LobbyView from "@/views/LobbyView.vue"
 import GameMap from "@/components/GameMap.vue"
+import GameOverview from "@/components/GameOverview.vue"
 import GameList from "@/components/GameList.vue"
 import GameSettings from "@/components/GameSettings.vue"
+// import { useGameStateStore } from "@/stores/gamestate"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/",
+      path: "/game",
       name: "game",
       component: GameView,
       children: [
         {
-          path: "/",
+          path: "/game",
+          name: "overview",
+          component: GameOverview
+        },
+        {
+          path: "/game/map",
           name: "map",
           component: GameMap
         },
         {
-          path: "/",
+          path: "/game/list",
           name: "list",
           component: GameList
         },
         {
-          path: "/",
+          path: "/game/settings",
           name: "settings",
           component: GameSettings
         }

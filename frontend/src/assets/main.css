@@ -30,7 +30,7 @@
   --h-main-offset: (var(--h-header) + var(--h-navbar) + var(--h-footer));
 
   --w-sidebar: 60px;
-  --w-detail: 150px;
+  --w-detail: 300px;
   --w-gamemap-offset: var(--w-sidebar);
 
   /* grid item height and vertical gap size are the only two variables defining size of the hexmap */

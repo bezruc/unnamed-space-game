@@ -3,7 +3,7 @@
 </script>
 
 <template>
-  <HexMap :columns="5" :rows="3" />
+  <HexMap :columns="10" :rows="6" />
 </template>
 
 <style scoped></style>

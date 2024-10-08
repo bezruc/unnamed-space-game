@@ -4,7 +4,11 @@
 
 <template>
   <div class="gameboard">
-    <router-view />
+    <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view>
   </div>
 </template>
 
@@ -12,5 +16,8 @@
   .gameboard {
     width: calc(100vw - var(--w-gamemap-offset));
     background-color: var(--c-primary-space);
+    align-items: center;
+    justify-content: center;
+    display: flex;
   }
 </style>
