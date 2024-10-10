@@ -3,10 +3,11 @@
   import { storeToRefs } from "pinia"
   import LobbyDialog from "./LobbyDialog.vue"
   import { ref } from "vue"
+  import LobbyDetail from "./LobbyDetail.vue"
 
   const gameState = useGameStateStore()
 
-  const { sessions } = storeToRefs(gameState)
+  const { sessions, currentUserId } = storeToRefs(gameState)
 
   let visibleCreateDialog = ref(false)
   let visibleJoinDialog = ref(false)
@@ -28,6 +29,18 @@
     console.log(lobbyId)
     visibleJoinDialog.value = false
   }
+
+  let visibleDetails = ref(false)
+  let detailsSession = ref({})
+
+  const openDetails = (session) => {
+    detailsSession.value = session
+    visibleDetails.value = true
+  }
+
+  const closeDetails = () => {
+    visibleDetails.value = false
+  }
 </script>
 
 <template>
@@ -44,6 +57,12 @@
       @close-dialog="closeJoinDialog"
       @submit-dialog="submitJoinDialog"
     />
+    <LobbyDetail
+      :isVisible="visibleDetails"
+      :session="detailsSession"
+      :currentUserId
+      @close-dialog="closeDetails"
+    />
     <div>Session list</div>
     <div>
       <button @click="visibleCreateDialog = true">CREATE</button>
@@ -57,11 +76,11 @@
           <div>Created</div>
           <div>Details button</div>
         </li>
-        <li class="session-list-item" v-for="lobby in sessions" :key="lobby.id">
-          <div>{{ lobby.name }}</div>
-          <div>{{ lobby.id }}</div>
-          <div>{{ lobby.created }}</div>
-          <button>Details</button>
+        <li class="session-list-item" v-for="session in sessions" :key="session.id">
+          <div>{{ session.name }}</div>
+          <div>{{ session.id }}</div>
+          <div>{{ session.created }}</div>
+          <button @click="() => openDetails(session)">Details</button>
         </li>
       </ul>
     </div>
@@ -94,18 +113,4 @@
   li {
     list-style-type: none;
   }
-
-  /* .lobby-create-dialog {
-    --width: 400px;
-    --height: 200px;
-    width: var(--width);
-    height: var(--height);
-    background-color: var(--c-secondary-bg);
-    position: absolute;
-    left: calc(50% - var(--width) / 2);
-    top: calc(50% - var(--height) / 2);
-  }
-  .is-visible {
-    display: none;
-  } */
 </style>

@@ -64,14 +64,14 @@ export const useGameStateStore = defineStore("game-phase", () => {
     selectedShip.value = {}
   }
 
-  let currentUserId = 1
+  let currentUserId = ref(1)
 
   let sessions = ref([
     {
       id: 1,
       name: "party hrad",
       created: new Date(Date.now() + 100005100).toISOString(),
-      phase: sessionPhase[0],
+      phase: sessionPhase[1],
       activityLog: ["player 1 created lobby"],
       players: [
         {
@@ -124,6 +124,13 @@ export const useGameStateStore = defineStore("game-phase", () => {
           faction: "green",
           isOwner: false,
           status: sessionPlayerStatus[2]
+        },
+        {
+          id: 1,
+          name: "Derg",
+          faction: "blue",
+          isOwner: false,
+          status: sessionPlayerStatus[0]
         }
       ]
     }

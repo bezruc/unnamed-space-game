@@ -56,21 +56,23 @@
 
 <template>
   <div class="lobby-dialog" :class="{ 'is-visible': isVisible }">
-    <button @click="close" id="close">CLOSE</button>
-    <div>{{ operationName.toLocaleUpperCase() }} SESSION</div>
-    <input
-      type="text"
-      name="lobbyDialogInput"
-      id="lobbyDialogInput"
-      v-model="input"
-      :placeholder="'Enter session ' + fieldName + '...'"
-      minlength="1"
-      :class="{ 'is-invalid': !isValid }"
-    />
-    <div class="validation-message" :class="{ 'is-invalid': !isValid }">
-      {{ validationMessage }}
+    <div class="flex">
+      <button @click="close" id="close">CLOSE</button>
+      <div>{{ operationName.toLocaleUpperCase() }} SESSION</div>
+      <input
+        type="text"
+        name="lobbyDialogInput"
+        id="lobbyDialogInput"
+        v-model="input"
+        :placeholder="'Enter session ' + fieldName + '...'"
+        minlength="1"
+        :class="{ 'is-invalid': !isValid }"
+      />
+      <div class="validation-message" :class="{ 'is-invalid': !isValid }">
+        {{ validationMessage }}
+      </div>
+      <button @click="submit">{{ operationName.toUpperCase() }}</button>
     </div>
-    <button @click="submit">{{ operationName.toUpperCase() }}</button>
   </div>
 </template>
 
@@ -86,12 +88,17 @@
     top: calc(50% - var(--height) / 2);
     padding: 1rem;
     display: none;
+  }
+
+  .flex {
+    display: flex;
     align-items: center;
     justify-content: space-between;
     flex-direction: column;
   }
+
   .is-visible {
-    display: flex;
+    display: block;
   }
 
   button {

@@ -5,11 +5,14 @@ import GameMap from "@/components/GameMap.vue"
 import GameOverview from "@/components/GameOverview.vue"
 import GameList from "@/components/GameList.vue"
 import GameSettings from "@/components/GameSettings.vue"
-// import { useGameStateStore } from "@/stores/gamestate"
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    {
+      path: "/",
+      redirect: "/lobby"
+    },
     {
       path: "/game",
       name: "game",
