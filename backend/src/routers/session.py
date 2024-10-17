@@ -5,6 +5,7 @@ from typing import Annotated
 
 from sqlmodel import select
 
+from backend.src.models.player import PlayerModel
 from backend.src.models.session import SessionModel
 from backend.src.models.session import SessionPublicModel
 from backend.src.models.session import SessionCreateModel
@@ -42,12 +43,34 @@ async def get_session(session_id: int, db_session: SessionDep):
 
 
 @router.delete("/{session_id}")
-async def delete_session(session_id: int, db_session: SessionDep):
+def delete_session(session_id: int, db_session: SessionDep):
     session = db_session.get(SessionModel, session_id)
     if not session:
         raise HTTPException(status_code=404, detail="Session not found")
     db_session.delete(session)
     db_session.commit()
-    return {"ok": True}
+    db_session.refresh(session)
+    return {"deleted_game_id": session_id}
 
 
+@router.post("/{session_id}/join", response_model=SessionPublicModel)
+def join_session(session_id: int, user_id: int, db_session: SessionDep):
+    session = db_session.get(SessionModel, session_id)
+    if not session:
+        raise HTTPException(status_code=404, detail="Session not found")
+    
+    if len(session.players) >= session.max_players:
+        raise HTTPException(status_code=409, detail="Session is full")
+    
+    player = db_session.get(PlayerModel, user_id)
+    if not player:
+        raise HTTPException(status_code=404, detail="Player not found")
+    
+    session.players.append(player)
+    db_session.add(session)
+    db_session.commit()
+    db_session.refresh(session)
+    db_session.refresh(player)
+    return session
+       
+    

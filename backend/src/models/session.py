@@ -1,11 +1,12 @@
 from sqlmodel import SQLModel, Field,  Relationship
-from typing import TYPE_CHECKING, List
+from pydantic import BaseModel
+from typing import TYPE_CHECKING
 
 from .player_sesssion_link import PlayerSessionLinkModel
 
 if TYPE_CHECKING:
     from .player import PlayerModel
-
+    from .player import PlayerPublicModel
 
 
 class SessionBaseModel(SQLModel):
@@ -15,8 +16,8 @@ class SessionBaseModel(SQLModel):
 
 class SessionModel(SessionBaseModel, table=True):
     id: int | None = Field(default=None, primary_key=True)
+    players: list["PlayerModel"] = Relationship(back_populates="sessions", link_model=PlayerSessionLinkModel)
     
-    players: List["PlayerModel"] = Relationship(back_populates="sessions", link_model=PlayerSessionLinkModel)
 
 
 class SessionPublicModel(SessionBaseModel):
