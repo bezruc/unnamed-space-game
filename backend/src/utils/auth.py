@@ -2,21 +2,17 @@ from datetime import datetime, timedelta, timezone
 from typing import Annotated
 
 import jwt
-from fastapi import Depends, HTTPException, status, APIRouter
+from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from jwt.exceptions import InvalidTokenError
 from passlib.context import CryptContext
-
 from sqlalchemy.sql import select
 
-from .db import Session
-from .db import get_session
-from .db import get_session
-from .db import Session
-from backend.src.tables.player import Player
+from backend.config import ACCESS_TOKEN_EXPIRE_MINUTES, ALGORITHM, SECRET_KEY
 from backend.src.models.token import Token, TokenData
-from backend.config import SECRET_KEY, ALGORITHM, ACCESS_TOKEN_EXPIRE_MINUTES
+from backend.src.tables.player import Player
 
+from .db import Session, get_session
 
 router = APIRouter(prefix="", tags=["auth"])
 
@@ -34,15 +30,21 @@ def verify_password(plain_password: str, hashed_password: str):
 def get_password_hash(password):
     return pwd_context.hash(password)
 
+
 from .db import engine
 
-def authenticate_player(username: str, password: str, session: Session = next(get_session())):
-        player = session.execute(select(Player).filter_by(username=username)).scalar_one()
-        if not player:
-            return False
-        if not verify_password(password, player.hashed_password):
-            return False
-        return player
+
+def authenticate_player(
+    username: str, password: str, session: Session = next(get_session())
+):
+    player = session.execute(
+        select(Player).filter_by(username=username)
+    ).scalar_one_or_none()
+    if not player:
+        return False
+    if not verify_password(password, player.hashed_password):
+        return False
+    return player
 
 
 def create_access_token(data: dict, expires_delta: timedelta | None = None):
@@ -56,7 +58,9 @@ def create_access_token(data: dict, expires_delta: timedelta | None = None):
     return encoded_jwt
 
 
-async def get_current_player(token: str = Depends(oauth2_scheme), session: Session = Depends(get_session)):
+async def get_current_player(
+    token: str = Depends(oauth2_scheme), session: Session = Depends(get_session)
+):
     credentials_exception = HTTPException(
         status_code=status.HTTP_401_UNAUTHORIZED,
         detail="Could not validate credentials",
@@ -70,7 +74,9 @@ async def get_current_player(token: str = Depends(oauth2_scheme), session: Sessi
         token_data = TokenData(username=username)
     except InvalidTokenError:
         raise credentials_exception
-    player = session.execute(select(Player).filter_by(username=token_data.username)).scalar_one()
+    player = session.execute(
+        select(Player).filter_by(username=token_data.username)
+    ).scalar_one()
     if player is None:
         raise credentials_exception
     return player

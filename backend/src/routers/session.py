@@ -1,13 +1,9 @@
-from fastapi import APIRouter
-from fastapi import HTTPException
-from fastapi import Query
 from typing import Annotated
 
+from fastapi import APIRouter, HTTPException, Query
 from sqlmodel import select
 
-from backend.src.utils.db import Session
-from backend.src.utils.db import get_session
-
+from backend.src.utils.db import Session, get_session
 
 router = APIRouter(prefix="/session", tags=["session"])
 
@@ -55,19 +51,17 @@ router = APIRouter(prefix="/session", tags=["session"])
 #     session = db_session.get(SessionModel, session_id)
 #     if not session:
 #         raise HTTPException(status_code=404, detail="Session not found")
-    
+
 #     if len(session.players) >= session.max_players:
 #         raise HTTPException(status_code=409, detail="Session is full")
-    
+
 #     player = db_session.get(PlayerModel, user_id)
 #     if not player:
 #         raise HTTPException(status_code=404, detail="Player not found")
-    
+
 #     session.players.append(player)
 #     db_session.add(session)
 #     db_session.commit()
 #     db_session.refresh(session)
 #     db_session.refresh(player)
 #     return session
-       
-    
