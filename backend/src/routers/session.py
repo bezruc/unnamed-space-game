@@ -5,14 +5,15 @@ from typing import Annotated
 
 from sqlmodel import select
 
-from backend.src.utils.db import SessionDep
+from backend.src.utils.db import Session
+from backend.src.utils.db import get_session
 
 
 router = APIRouter(prefix="/session", tags=["session"])
 
 
 # @router.post("/", response_model=SessionPublicModel)
-# async def create_session(session: SessionCreateModel, db_session: SessionDep):
+# async def create_session(session: SessionCreateModel, db_session: Session = Depends(get_session)):
 #     session_validated = SessionModel.model_validate(session)
 #     db_session.add(session_validated)
 #     db_session.commit()
@@ -22,7 +23,7 @@ router = APIRouter(prefix="/session", tags=["session"])
 
 # @router.get("/", response_model=list[SessionPublicModel])
 # async def get_sessions(
-#     db_session: SessionDep,
+#     db_session: Session = Depends(get_session),
 #     offset: int = 0,
 #     limit: Annotated[int, Query(le=100)] = 100,
 # ):
@@ -31,7 +32,7 @@ router = APIRouter(prefix="/session", tags=["session"])
 
 
 # @router.get("/{session_id}",  response_model=SessionPublicModel)
-# async def get_session(session_id: int, db_session: SessionDep):
+# async def get_session(session_id: int, db_session: Session = Depends(get_session)):
 #     session = db_session.get(SessionModel, session_id)
 #     if not session:
 #         raise HTTPException(status_code=404, detail="Session not found")
@@ -39,7 +40,7 @@ router = APIRouter(prefix="/session", tags=["session"])
 
 
 # @router.delete("/{session_id}")
-# def delete_session(session_id: int, db_session: SessionDep):
+# def delete_session(session_id: int, db_session: Session = Depends(get_session)):
 #     session = db_session.get(SessionModel, session_id)
 #     if not session:
 #         raise HTTPException(status_code=404, detail="Session not found")
@@ -50,7 +51,7 @@ router = APIRouter(prefix="/session", tags=["session"])
 
 
 # @router.post("/{session_id}/join", response_model=SessionPublicModel)
-# def join_session(session_id: int, user_id: int, db_session: SessionDep):
+# def join_session(session_id: int, user_id: int, db_session: Session = Depends(get_session)):
 #     session = db_session.get(SessionModel, session_id)
 #     if not session:
 #         raise HTTPException(status_code=404, detail="Session not found")
