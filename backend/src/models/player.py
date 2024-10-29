@@ -1,34 +1,24 @@
-from sqlmodel import Field, SQLModel, Relationship
-from typing import TYPE_CHECKING, List
+from pydantic import BaseModel
 
-from .player_sesssion_link import PlayerSessionLinkModel
+from .session import SessionPublic
 
-if TYPE_CHECKING:
-    from .session import SessionModel
-
-
-
-class PlayerBaseModel(SQLModel):
+class PlayerCreation(BaseModel):
     name: str
     email: str
-       
- 
-class PlayerModel(PlayerBaseModel, table=True):
-    id: int = Field(default=None, primary_key=True)
-    hashed_password: str = Field()
-    
-    sessions: List["SessionModel"] = Relationship(back_populates="players", link_model=PlayerSessionLinkModel)
- 
-
-class PlayerPublicModel(PlayerBaseModel):
-    id: int
-
-
-class PlayerCreateModel(PlayerBaseModel):
     password: str
+    
+    
+class PlayerUpdate(BaseModel):
+    name: str | None
+    email: str | None
+    password: str | None
+    
+    
+class PlayerPublic(BaseModel):
+    id: int
+    name: str
+    sessions: list[SessionPublic]
+    
 
-
-class PlayerUpdateModel(PlayerBaseModel):
-    name: str | None = None
-    email: str | None = None
-    password: str | None = None
+class PlayerDB(PlayerCreation):
+    hashed_password: str
